@@ -21,6 +21,6 @@
 
     script:
     """
-    fastq-dump  --split-files -X 5 --outdir ./ ${srr}  
+    fastq-dump  --split-files -X 100000 --outdir ./ ${srr}  
     """
    }

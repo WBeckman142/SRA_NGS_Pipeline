@@ -22,12 +22,14 @@ process run_bowtie2_aligner {
         path index_base
 
     output:
-        tuple val(srr), path("*.bam")
+        tuple val(srr), path("*.sorted.bam"), path("*.sorted.bam.bai")
 
     script:
 
     """
-    bowtie2 -x ${index_base}/hg19 -1 ${read1} -2 ${read2} | samtools view -bS - > "${srr}.bam"
+    bowtie2 -x ${index_base}/hg19 -1 ${read1} -2 ${read2} \
+      | samtools sort -o ${srr}.sorted.bam \
+      | samtools index ${srr}.sorted.bam
     """
 }
 
