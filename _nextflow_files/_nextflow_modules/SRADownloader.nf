@@ -8,6 +8,8 @@
 
  process sradownloader {
 
+   tag { srr }
+
     publishDir 'data/raw', mode: 'copy'
     container 'community.wave.seqera.io/library/sra-tools:3.2.1--2063130dadd340c5'
 
@@ -15,10 +17,10 @@
         val srr
 
     output:
-       file("*.fastq")
+       tuple val(srr), path("*_1.fastq"), path("*_2.fastq")
 
     script:
     """
-    fastq-dump  --split-files -X 50000 --outdir ./ ${srr}  
+    fastq-dump  --split-files -X 5 --outdir ./ ${srr}  
     """
    }

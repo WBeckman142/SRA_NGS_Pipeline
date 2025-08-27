@@ -16,17 +16,18 @@ params.reads    = "${launchDir}/data/raw/*.fastq"
 
 srr_ch          = Channel.fromPath(input_sra_codes)
                          .splitText()
+                         .map { it.trim() }
 
-index_ch        = Channel.value("/Users/willbeckman/Documents/Nextflow/reference_genome/hg19")
+index_ch        = Channel.value("/Users/willbeckman/Documents/Nextflow/reference_genome")
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Import modules from nextflow_files/nextflow_modules folder
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-include { sradownloader          } from "${launchDir}/nextflow_files/nextflow_modules/SRADownloader.nf"
-include { run_fastqc             } from "${launchDir}/nextflow_files/nextflow_modules/FASTQC_module.nf"
-include { run_bowtie2_aligner    } from "${launchDir}/nextflow_files/nextflow_modules/bowtie2_module.nf"
+include { sradownloader          } from "${launchDir}/_nextflow_files/_nextflow_modules/SRADownloader.nf"
+include { run_fastqc             } from "${launchDir}/_nextflow_files/_nextflow_modules/FASTQC_module.nf"
+include { run_bowtie2_aligner    } from "${launchDir}/_nextflow_files/_nextflow_modules/bowtie2_module.nf"
 
 
 
@@ -42,10 +43,10 @@ workflow{
     // run fastqc
     run_fastqc(fastq_ch)
 
-    read_pairs_ch   = Channel.fromFilePairs("data/raw/*_{1,2}.fastq")                    
-                             .map { id, reads -> tuple(id, reads) }
-                             .view()
+    read_pairs_ch = fastq_ch.map { srr_id, read1, read2 ->
+        tuple(srr_id.trim(), read1, read2)
+    }
 
     // run bowtie2
-    run_bowtie2_aligner(read_pairs_ch, index_ch)
+    run_bowtie2_aligner( read_pairs_ch , index_ch )
 }

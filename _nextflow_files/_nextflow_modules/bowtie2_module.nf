@@ -7,26 +7,27 @@
 
 
 process run_bowtie2_aligner {
+    maxForks 1
 
-    tag "${sample_id}"
+    
+
+    tag { srr }
 
     publishDir "data/processed", mode: 'copy'
     container "community.wave.seqera.io/library/bowtie2_samtools:a08292672802bd5b"
     
 
     input:
-    tuple val(sample_id), path(reads) // reads is a list: [R1, R2]
-    val index_base
+        tuple val(srr), path(read1), path(read2) // reads is a list: [R1, R2]
+        path index_base
 
     output:
-    tuple val(sample_id), path("${sample_id}.bam")
+        tuple val(srr), path("*.bam")
 
     script:
+
     """
-    bowtie2 -x ${index_base} \
-        -1 ${reads[0]} \
-        -2 ${reads[1]} \
-        | samtools view -bS - > ${sample_id}.bam
+    bowtie2 -x ${index_base}/hg19 -1 ${read1} -2 ${read2} | samtools view -bS - > "${srr}.bam"
     """
 }
 
