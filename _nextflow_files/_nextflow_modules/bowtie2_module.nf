@@ -16,7 +16,7 @@ process run_bowtie2_aligner {
     
 
     input:
-        tuple val(srr), path(read1), path(read2) // reads is a list: [R1, R2]
+        tuple val(srr), path(read1), path(read2)
         path index_base
 
     output:

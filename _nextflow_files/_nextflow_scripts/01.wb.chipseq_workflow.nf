@@ -6,8 +6,13 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 input_sra_codes = 'txt_inputs/srr_codes.txt'
-params.reads    = "${launchDir}/data/raw/*.fastq"
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Define params
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+// Default: no limit (download all reads)
+params.max_reads = params.max_reads ?: null
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Create channels
@@ -19,7 +24,6 @@ srr_ch          = Channel.fromPath(input_sra_codes)
 
 index_ch        = Channel.value("${launchDir}/reference_genome")
 
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Import modules from nextflow_files/nextflow_modules folder
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -28,10 +32,10 @@ include { sradownloader          } from "${launchDir}/_nextflow_files/_nextflow_
 include { run_fastqc             } from "${launchDir}/_nextflow_files/_nextflow_modules/FASTQC_module.nf"
 include { run_bowtie2_aligner    } from "${launchDir}/_nextflow_files/_nextflow_modules/bowtie2_module.nf"
 
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Run workflow using imported modules
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 workflow{
 
     // download fastq files from SRA using fastq-dump
@@ -40,7 +44,7 @@ workflow{
     // run fastqc
     run_fastqc(fastq_ch)
 
-    // run fastqc
+    // create tuple for bowtie2
     read_pairs_ch = fastq_ch.map { srr_id, read1, read2 ->
         tuple(srr_id.trim(), read1, read2)}
 
