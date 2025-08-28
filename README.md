@@ -28,6 +28,7 @@ It downloads FASTQ files, runs **FastQC** for quality control, and aligns reads 
 ---
 
 ## 📂 Repository Structure
+```
 ├── data/ # Raw and processed data
 │ ├── raw/ # Input FASTQ files
 │ └── processed/ # Aligned BAM outputs
@@ -38,7 +39,7 @@ It downloads FASTQ files, runs **FastQC** for quality control, and aligns reads 
 ├── reference_genome/ # Bowtie2 index files for hg19
 ├── txt_inputs/ # SRA accession list (srr_codes.txt)
 └── main.nf # Main Nextflow pipeline
-
+```
 
 ---
 
