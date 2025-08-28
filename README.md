@@ -58,25 +58,23 @@ cd YOUR_REPO
 ▶️ Usage
 
 Add your SRA accession codes to txt_inputs/srr_codes.txt.
-
 Run the pipeline:
-
+```
 nextflow run main.nf
+```
 
 📊 Example Output
 
 After running the pipeline, you’ll find:
-
 FastQC HTML reports in reports/
-
 Aligned BAM files + indexes in data/processed/
 
 Example:
-
+```
 data/processed/
 ├── SRR30621347.sorted.bam
 ├── SRR30621347.sorted.bam.bai
-
+```
 
 🤝 Contributing
 
