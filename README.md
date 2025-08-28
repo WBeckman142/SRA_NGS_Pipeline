@@ -14,6 +14,7 @@ It downloads FASTQ files, runs **FastQC** for quality control, and aligns reads 
 ## 📖 Overview
 - Automates NGS data preprocessing with reproducibility in mind.
 - Designed to work with SRA accession codes.
+- Allows you to download sepcified number of reads per sample.
 - Generates alignment-ready BAM files with indexes for downstream analysis.
 
 ---
@@ -57,7 +58,7 @@ cd SRA_NGS_Pipeline
 
 ▶️ Usage
 
-Add your SRA accession codes to txt_inputs/srr_codes.txt.
+Add your SRA accession codes to txt_inputs/srr_codes.txt.<br>
 Run the pipeline:
 ```
 nextflow run main.nf
