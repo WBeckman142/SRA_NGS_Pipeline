@@ -63,6 +63,11 @@ Run the pipeline:
 ```
 nextflow run main.nf
 ```
+By default, the pipeline downloads all of the reads from each SRA accession. You can override this with the --max_reads parameter:
+```
+nextflow run main.nf --max_reads 50000
+```
+- --max_reads: Maximum number of reads to download from each SRA accession.
 
 📊 Example Output
 
