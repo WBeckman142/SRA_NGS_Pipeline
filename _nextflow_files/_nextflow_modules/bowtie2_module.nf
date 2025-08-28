@@ -28,8 +28,10 @@ process run_bowtie2_aligner {
 
     """
     bowtie2 -x ${index_base}/hg19 -1 ${read1} -2 ${read2} \
-      | samtools sort -o ${srr}.sorted.bam \
-      | samtools index ${srr}.sorted.bam
+      | samtools view -bS - \
+      | samtools sort -o ${srr}.sorted.bam
+    
+    samtools index -b ${srr}.sorted.bam
     """
 }
 
