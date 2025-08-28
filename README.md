@@ -65,8 +65,8 @@ nextflow run main.nf
 
 📊 Example Output
 
-After running the pipeline, you’ll find:
-FastQC HTML reports in reports/
+After running the pipeline, you’ll find:<br>
+FastQC HTML reports in reports/<br>
 Aligned BAM files + indexes in data/processed/
 
 Example:
