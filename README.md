@@ -50,8 +50,8 @@ Make sure you have:
 
 Clone this repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/WBeckman142/SRA_NGS_Pipeline.git
+cd SRA_NGS_Pipeline
 ```
 
 
@@ -66,8 +66,8 @@ nextflow run main.nf
 📊 Example Output
 
 After running the pipeline, you’ll find:<br>
-FastQC HTML reports in reports/<br>
-Aligned BAM files + indexes in data/processed/
+- FastQC HTML reports in reports/<br>
+- Aligned BAM files + indexes in data/processed/
 
 Example:
 ```
