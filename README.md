@@ -56,7 +56,7 @@ cd SRA_NGS_Pipeline
 ```
 
 
-▶️ Usage
+## ▶️ Usage
 
 Add your SRA accession codes to txt_inputs/srr_codes.txt.<br>
 Add your indexed hg19 reference genome to the folder reference_genome in the main directory<br>
@@ -71,7 +71,7 @@ nextflow run main.nf --max_reads 50000
 ```
 - --max_reads: Maximum number of reads to download from each SRA accession.
 
-📊 Example Output
+## 📊 Example Output
 
 After running the pipeline, you’ll find:<br>
 - FastQC HTML reports in reports/<br>
@@ -83,7 +83,8 @@ data/processed/
 ├── SRR30621347.sorted.bam
 ├── SRR30621347.sorted.bam.bai
 ```
-In IGV:
+## In IGV:
+<br>
 ![IGV Tracks](https://github.com/WBeckman142/SRA_NGS_Pipeline/blob/main/images/IGV_tracks.png?raw=true)
 
 🤝 Contributing
