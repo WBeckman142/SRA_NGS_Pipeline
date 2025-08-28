@@ -3,8 +3,8 @@
 ![Nextflow](https://img.shields.io/badge/nextflow-%2300A388.svg?style=flat&logo=nextflow&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/WBeckman142/SRA_NGS_Pipeline)
-![GitHub repo size](https://img.shields.io/github/repo-size/WBeckman142/SRA_NGS_Pipeline)
+![GitHub last commit](https://img.shields.io/github/last-commit/WBeckman142/SRA_NGS_Pipeline/main)
+
 
 This repository contains a **Nextflow pipeline** for processing NGS data from SRA.  
 It downloads FASTQ files, runs **FastQC** for quality control, and aligns reads to the **hg19 human genome** using **Bowtie2**, producing sorted and indexed BAM files ready for visualization in **IGV**.
@@ -63,6 +63,11 @@ Run the pipeline:
 ```
 nextflow run main.nf
 ```
+By default, the pipeline downloads all of the reads from each SRA accession. You can override this with the --max_reads parameter:
+```
+nextflow run main.nf --max_reads 50000
+```
+- --max_reads: Maximum number of reads to download from each SRA accession.
 
 📊 Example Output
 
