@@ -14,7 +14,7 @@ It downloads (and subsamples) FASTQ files, runs **FastQC** for quality control, 
 ## 📖 Overview
 - Automates NGS data preprocessing with reproducibility in mind.
 - Designed to work with SRA accession codes.
-- Allows you to download specified number of reads per sample.
+- Allows you to download a specified number of reads per sample.
 - Generates alignment-ready BAM files with indexes for downstream analysis.
 
 ---
