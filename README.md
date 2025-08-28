@@ -4,7 +4,7 @@
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/WBeckman142/SRA_NGS_Pipeline/main)
-![GitHub repo size](https://img.shields.io/github/repo-size/WBeckman142/SRA_NGS_Pipeline/)
+
 
 This repository contains a **Nextflow pipeline** for processing NGS data from SRA.  
 It downloads FASTQ files, runs **FastQC** for quality control, and aligns reads to the **hg19 human genome** using **Bowtie2**, producing sorted and indexed BAM files ready for visualization in **IGV**.
