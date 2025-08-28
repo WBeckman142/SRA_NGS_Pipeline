@@ -84,7 +84,7 @@ data/processed/
 ├── SRR30621347.sorted.bam.bai
 ```
 ## In IGV:
-<br>
+
 ![IGV Tracks](https://github.com/WBeckman142/SRA_NGS_Pipeline/blob/main/images/IGV_tracks.png?raw=true)
 
 🤝 Contributing
