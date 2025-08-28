@@ -1,15 +1,13 @@
 #!/usr/bin/env nextflow
 
-
-/**
-* run bowtie2 to align the reads to the human genome build hg19
-*/
-
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Run Bowtie2 and align to the human genome hg19
+* Run samtools to convert sam files to bam files then sort and index
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 process run_bowtie2_aligner {
+    // limited parallelisation to run on local machine
     maxForks 1
-
-    
 
     tag { srr }
 

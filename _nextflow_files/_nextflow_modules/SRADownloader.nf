@@ -1,10 +1,8 @@
 #!/usr/bin/env nextflow
 
-
-/**
-* download 50,000 reads from target files using fastq-dump. Split files into read pairs
-*/
-
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Download 100,000 reads from target files using fastq-dump. Split files into read pairs
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
  process sradownloader {
 
