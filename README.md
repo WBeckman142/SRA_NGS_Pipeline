@@ -59,6 +59,8 @@ cd SRA_NGS_Pipeline
 ▶️ Usage
 
 Add your SRA accession codes to txt_inputs/srr_codes.txt.<br>
+Add your indexed hg19 reference genome to the folder reference_genome in the main directory<br>
+<br>
 Run the pipeline:
 ```
 nextflow run main.nf
