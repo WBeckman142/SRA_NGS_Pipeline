@@ -7,7 +7,7 @@
 
 
 This repository contains a **Nextflow pipeline** for processing NGS data from SRA.  
-It downloads (and subsamples) FASTQ files, runs **FastQC** for quality control, and aligns reads to the **hg19 human genome** using **Bowtie2**, producing sorted and indexed BAM files ready for visualization in **IGV**.
+It downloads (and downsamples) FASTQ files, runs **FastQC** for quality control, and aligns reads to the **hg19 human genome** using **Bowtie2**, producing sorted and indexed BAM files ready for visualization in **IGV**.
 
 ---
 
