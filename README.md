@@ -84,7 +84,7 @@ Example:
 ```
 data/processed/
 ├── SRR30621347.sorted.bam
-├── SRR30621347.sorted.bam.bai
+└── SRR30621347.sorted.bam.bai
 ```
 ## In IGV:
 
