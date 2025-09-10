@@ -33,13 +33,16 @@ It downloads (and downsamples) FASTQ files, runs **FastQC** for quality control,
 ├── data/ # Raw and processed data
 │ ├── raw/ # Input FASTQ files
 │ └── processed/ # Aligned BAM outputs
-├── nextflow_files/ # Nextflow modules
-│ ├── FASTQC_module.nf
-│ ├── SRADownloader.nf
-│ └── bowtie2_module.nf
+├── _nextflow_files/ # Nextflow files
+│  ├── _nextflow_modules
+│    ├── bowtie2_module.nf
+│    ├── FASTQC_module.nf
+│    ├── SRADownloader.nf
+│    └── bowtie2_module.nf
+│  ├── _nextflow_scripts
+│   └── 01.wb.chipseq_workflow.nf
 ├── reference_genome/ # Bowtie2 index files for hg19
 ├── txt_inputs/ # SRA accession list (srr_codes.txt)
-└── main.nf # Main Nextflow pipeline
 ```
 
 ---
@@ -63,11 +66,11 @@ Add your indexed hg19 reference genome to the folder reference_genome in the mai
 <br>
 Run the pipeline:
 ```
-nextflow run main.nf
+nextflow run _nextflow_files/_nextflow_scripts/01.wb.chipseq_workflow.nf
 ```
 By default, the pipeline downloads all of the reads from each SRA accession. You can override this with the --max_reads parameter:
 ```
-nextflow run main.nf --max_reads 50000
+nextflow run _nextflow_files/_nextflow_scripts/01.wb.chipseq_workflow.nf --max_reads 50000
 ```
 - --max_reads: Maximum number of reads to download from each SRA accession.
 
