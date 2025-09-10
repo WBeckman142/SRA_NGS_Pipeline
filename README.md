@@ -34,12 +34,12 @@ It downloads (and downsamples) FASTQ files, runs **FastQC** for quality control,
 │ ├── raw/ # Input FASTQ files
 │ └── processed/ # Aligned BAM outputs
 ├── _nextflow_files/ # Nextflow files
-│  ├── _nextflow_modules
-│    ├── bowtie2_module.nf
-│    ├── FASTQC_module.nf
-│    ├── SRADownloader.nf
-│    └── bowtie2_module.nf
-│  ├── _nextflow_scripts
+│ └── _nextflow_modules
+│   ├── bowtie2_module.nf
+│   ├── FASTQC_module.nf
+│   ├── SRADownloader.nf
+│   └── bowtie2_module.nf
+│ └── _nextflow_scripts
 │   └── 01.wb.chipseq_workflow.nf
 ├── reference_genome/ # Bowtie2 index files for hg19
 ├── txt_inputs/ # SRA accession list (srr_codes.txt)
